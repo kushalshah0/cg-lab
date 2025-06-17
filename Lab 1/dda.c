@@ -1,71 +1,54 @@
-// DDA algorithm to draw a line.
-
-// Including preprocessor directives.
 #include <stdio.h>
 #include <graphics.h>
 #include <math.h>
 
-// Declaring main function.
 int main(int argc, char const *argv[])
 {
-	// Declaring variables.
-	int x,y,x1,y1,x2,y2,dx,dy,steps,m;
-
-	// Asking for initial point.
+	int x, y, x1, y1, x2, y2, dx, dy, steps, m;
+	printf("Created by Kushal Shah\nDDA Algorithm\n");
 	printf("Enter the initial point\n");
-	scanf("%d %d",&x1,&y1);
-
-	// Asking for final point.
+	scanf("%d %d", &x1, &y1);
 	printf("Enter the final point\n");
-	scanf("%d %d",&x2,&y2);
+	scanf("%d %d", &x2, &y2);
 
-	// Calculating the differences between initial and final points.
-	dx=x2-x1;
-	dy=y2-y1;
-	
-	m=dy/dx;
+	dx = x2 - x1;
+	dy = y2 - y1;
+	m = dy / dx;
 
-	// Determining the number of steps.
-	if (dx>=dy)
+	if (dx >= dy)
 	{
-		steps=dx;
+		steps = dx;
 	}
 	else
 	{
-		steps=dy;
+		steps = dy;
 	}
 
-	if(m<1){
-	  x=x1+1;
-	  y=y1+m;
+	if (m < 1) {
+		x = x1 + 1;
+		y = y1 + m;
 	}
-	else if(m>1){
-	  x=x1+(1/m);
-	  y=y1+m;
+	else if (m > 1) {
+		x = x1 + (1 / m);
+		y = y1 + m;
 	}
-	else{
-	  x=x1+1;
-	  y=y1+1;
+	else {
+		x = x1 + 1;
+		y = y1 + 1;
 	}
 
-	// Initializing graphics variables.
-	int gd=DETECT,gm;
+	int gd = DETECT, gm;
+	initgraph(&gd, &gm, NULL);
 
-	// Initializing graphics.
-	initgraph(&gd,&gm,NULL);
-
-	outtextxy(10,10,"Kushal Shah");
-
-	// Drawing individual pixels in a loop.
+	outtextxy(70, 70, "Kushal Shah");
 	for (int i = 0; i < steps; i++)
 	{
-		putpixel(x1,y1,5);
-		x1+=x;
-		y1+=y;
+		putpixel(x1, y1, 5);
+		x1 += x;
+		y1 += y;
 		delay(100);
 	}
 
-	// Concluding the program.
 	delay(500000);
 	closegraph();
 	return 0;
