@@ -70,4 +70,3 @@ int main(int argc, char const *argv[])
 	closegraph();
 	return 0;
 }
-
