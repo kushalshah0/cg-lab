@@ -9,7 +9,7 @@
 int main(int argc, char const *argv[])
 {
 	// Declaring variables.
-	int x1,y1,x2,y2,dx,dy,steps;
+	int x,y,x1,y1,x2,y2,dx,dy,steps,m;
 
 	// Asking for initial point.
 	printf("Enter the initial point\n");
@@ -20,8 +20,10 @@ int main(int argc, char const *argv[])
 	scanf("%d %d",&x2,&y2);
 
 	// Calculating the differences between initial and final points.
-	dx=abs(x2-x1);
-	dy=abs(y2-y1);
+	dx=x2-x1;
+	dy=y2-y1;
+	
+	m=dy/dx;
 
 	// Determining the number of steps.
 	if (dx>=dy)
@@ -33,9 +35,18 @@ int main(int argc, char const *argv[])
 		steps=dy;
 	}
 
-	// Determining the increment per step.
-	dy/=steps;
-	dx/=steps;
+	if(m<1){
+	  x=x1+1;
+	  y=y1+m;
+	}
+	else if(m>1){
+	  x=x1+(1/m);
+	  y=y1+m;
+	}
+	else{
+	  x=x1+1;
+	  y=y1+1;
+	}
 
 	// Initializing graphics variables.
 	int gd=DETECT,gm;
@@ -47,8 +58,8 @@ int main(int argc, char const *argv[])
 	for (int i = 0; i < steps; i++)
 	{
 		putpixel(x1,y1,5);
-		x1+=dx;
-		y1+=dy;
+		x1+=x;
+		y1+=y;
 		delay(100);
 	}
 
