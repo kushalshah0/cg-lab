@@ -54,6 +54,8 @@ int main(int argc, char const *argv[])
 	// Initializing graphics.
 	initgraph(&gd,&gm,NULL);
 
+	outtextxy(10,10,"Kushal Shah");
+
 	// Drawing individual pixels in a loop.
 	for (int i = 0; i < steps; i++)
 	{
